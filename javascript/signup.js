@@ -35,3 +35,14 @@ function resetFields(){
 	document.getElementById("indexPageValidateText").innerHTML = "";
 	document.getElementById("indexPageRememberCheck").checked = false;
 }
+
+//This is the function to check if all the fields are selected or not.
+function checkFields(){
+	if(document.getElementById("indexPageEmailId").value === "" || document.getElementById("indexPageName").value === ""){
+		alert("Please fill all the form fields correctly or make sure that you have filled all the fields");
+		return false;
+	}
+	
+	window.location.href='test.html';
+	return true;
+}
