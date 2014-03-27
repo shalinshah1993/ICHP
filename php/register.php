@@ -4,8 +4,9 @@ session_start();
 $db = mysql_connect("localhost", "root","");
 $email_id = $_POST['indexPageEmailId'];
 $_SESSION['indexPageEmailId'] = $email_id;
-echo $_SESSION['indexPageEmailId'];
+//echo $_SESSION['indexPageEmailId'];
 $name = $_POST['indexPageName'];
+$_SESSION['indexPageName'] = $name;
 $l2 = $_POST['indexPageLangSelect'];
 mysql_select_db("onlinetest",$db);
 $sql = "INSERT INTO user (email_id, name, L2) 

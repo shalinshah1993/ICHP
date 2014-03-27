@@ -65,25 +65,31 @@
 					$time2 = strtotime($end_time);
 					$diff = $time2 - $time1;
 
-					$ques_ans = mysql_query("SELECT q_no, answer FROM question");
-					$marked_answers = mysql_query('SELECT q_no, answer FROM record_answer WHERE email_id="'.$email_id.'"');
+					//$ques_ans = mysql_query("SELECT q_no, answer_correct FROM question");
+					$marked_answers = mysql_query('SELECT q_no, answer, time_elapsed FROM record_answer WHERE email_id="'.$email_id.'"');
 					$correct_answers = 0;
+					$total_time_sec = 0;
 					while($r = mysql_fetch_assoc($marked_answers)){
 						echo '<tr>';
 
-						$marked_answer = mysql_query('SELECT answer FROM question WHERE q_no="'.$r['q_no'].'"');
+						$ques_ans = mysql_query('SELECT answer_correct FROM question WHERE q_no="'.$r['q_no'].'"');
 
-						$ans = mysql_fetch_array($marked_answer);
+						$ans = mysql_fetch_array($ques_ans);
 
 						echo '<td>'.$r['q_no'].'</td>';
-						echo '<td>'.$ans['answer'].'</td>';
+						echo '<td>'.$ans['answer_correct'].'</td>';
 						echo '<td>'.$r['answer'].'</td>';
-						echo '<td>00:00:00</td>';
+						$minutes = (int) ((int) $r['time_elapsed']/60);
+						$seconds = (int) $r['time_elapsed']%60;
+						echo '<td>'.$minutes.' minutes '.$seconds.' seconds </td>';
 						echo '</tr>';
 
-						if ($r['answer'] == $ans['answer']) {
+						if ($r['answer'] == $ans['answer_correct']) {
 							$correct_answers = $correct_answers + 1;
 						}
+
+						$total_time_sec = $total_time_sec + ((int) $r['time_elapsed']);
+
 					} 
 
 					?>
@@ -93,8 +99,11 @@
 	</div>
 
 	<center>
+		<h3 style="padding-bottom: 10px;"><span class="label label-default">
+			<?php echo "Total Correct Answers : ".$correct_answers;?>
+		</span></h3>
 		<h3 style="padding-bottom: 40px;"><span class="label label-default">
-			<?php echo "Total Correct Answers : ".$correct_answers ?>
+			<?php echo "Total Time Taken : ".(int)((int)$total_time_sec/60)." minutes ".((int)$total_time_sec%60)." seconds";?>
 		</span></h3>
 	</center>
 

@@ -43,6 +43,7 @@
 	<?php
 	session_start();
 	$email_id=$_SESSION['indexPageEmailId'];
+	$user_name=$_SESSION['indexPageName'];
 	$quest_id = $_GET['quest_id'];
 	$_SESSION['quest_id']=$quest_id;
 	$pass_id = $_GET['pass_id'];
@@ -60,19 +61,25 @@
 		<div style="margin-top:100px">
 			<div class="container">
 
-				<!-- <div class="progress progress-striped active">
-					<div class="progress-bar" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 85%">
-						<span class="sr-only">45% Complete</span>
-					</div>
-				</div> -->
+				<div class="progress progress-striped active">
+					<!-- echo '<td>'.$r['q_no'].'</td>'; -->
+					<?php
+					$progress = (int) $quest_id/25.0*100;
+					echo '<div class="progress-bar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" role="progressbar" style="width: '.$progress.'%"> Progress: '.$progress.'%';
+					?>
+				</div>
+			</div>
 
-				<p id="testPageError" class="alert alert-danger" hidden>Please select any one option before proceding to the next page.</p>
-				
+			<p id="testPageError" class="alert alert-danger" hidden>Please select any one option before proceding to the next page.</p>
+
+			<div class="panel panel-primary">
 				<table class="table">					
-					<tr>
-						<th><?php echo 'Passage '.$pass_id; ?></th>
-						<th></th>
-						<td></td>
+					<tr class="panel-heading">
+						<th ><?php echo 'Passage '.$pass_id; ?></th>
+						<th ></th>
+						<td>
+							<p>Time Elapsed:</p><p id="testPageTimeShow"></p><p id="testPageTime" hidden></p>
+							</td>
 					</tr>
 					<tr>
 						<td rowspan=3 width="70%" height="100%">
@@ -117,14 +124,16 @@
 									<input type="radio" id="option_4" name="option" value="4">
 									<label for="option_4"><?php echo $quest_row['option_4']; ?></label><br/>
 									<?php echo str_repeat('&nbsp;', 5); echo $quest_row['english_option_4']; ?><br/>
+
+									<input type="input" id="testPageTimer" name="testPageTimer" value="2" hidden>
 								</div>
 								<td></td>
 
 								<tr>
 									<!--	<td align="left" style='border-left:1px solid;border-right:0px;padding-left:2px;padding-top:1px;' valign="middle"><?php echo $email_id ?> -->
-									<td></td>
+									<?php echo '<th> Welcome, '.$user_name.'</th>'; ?>
 									<td><input type="button" class="btn btn-primary" value="Previous" style="width:100px; algin:left;" onclick="history.go(-1);"></td>
-									<td><input type="submit" class="btn btn-primary" value="Next" style="width:100px; algin:left;" onclick="validateOption()"></td>
+									<td><input type="submit" class="btn btn-primary" value="Next" style="width:100px; algin:right;" onclick="validateOption()"></td>
 								</tr>
 							</form>							
 						</td>
@@ -132,16 +141,17 @@
 				</table>
 			</div>
 		</div>
-	</body>
-
-
-	<div class="footer">
-		<footer>	
-			<div align="right">
-				<p><b>Developers :- Shalin Shah, Nikit Saraf and Shivang Bhatt. &nbsp; &copy; 2014 IRLab, DA-IICT.</b></p>
-			</div>
-		</footer>
 	</div>
+</body>
+
+
+<div class="footer">
+	<footer>	
+		<div align="right">
+			<p><b>Developers :- Shalin Shah, Nikit Saraf and Shivang Bhatt. &nbsp; &copy; 2014 IRLab, DA-IICT.</b></p>
+		</div>
+	</footer>
+</div>
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->

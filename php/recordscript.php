@@ -5,14 +5,16 @@ $db = mysql_connect("localhost", "root","");
 $email_id=$_SESSION['indexPageEmailId'];
 $quest_id=$_SESSION['quest_id'];
 $answer=$_POST['option'];
+$timer=$_POST['testPageTimer'];
 echo $quest_id;
 echo $email_id;
 echo $answer;
+echo $timer;
 settype($answer, "int");
 settype($quest_id,"int");
 mysql_select_db("onlinetest",$db);
-$sql = "INSERT INTO record_answer (email_id, q_no, answer) 
-VALUES ('$email_id', '$quest_id', '$answer') ON DUPLICATE KEY UPDATE answer=$answer";
+$sql = "INSERT INTO record_answer (email_id, q_no, answer, time_elapsed) 
+VALUES ('$email_id', '$quest_id', '$answer', '$timer') ON DUPLICATE KEY UPDATE answer=$answer";
 $result = mysql_query($sql);
 $quest_id++;
 echo $quest_id;
