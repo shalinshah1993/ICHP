@@ -43,6 +43,6 @@ function checkFields(){
 		return false;
 	}
 	
-	window.location.href='test.html';
+	// window.location.href='test.html';
 	return true;
 }

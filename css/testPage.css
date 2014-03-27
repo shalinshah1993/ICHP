@@ -10,3 +10,27 @@ body {
 	background-color:#171717;
 	color:white;
 }
+
+.passage{
+	overflow:visible;
+	color:black;
+	font-family:'Courier New', Courier, monospace;
+	font-size:18px;
+	padding-left:5px;
+	padding-right:5px;
+	text-align:justify;
+}
+
+.questionGujju{
+	overflow:visible;
+	color:black;
+	font-family:'Courier New', Courier, monospace;
+	font-size:18px;
+}
+
+.questionEnglish{
+	overflow:auto;
+	color:black;
+	font-family:'Courier New', Courier, monospace;
+	font-size:14px;
+}

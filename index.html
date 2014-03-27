@@ -46,10 +46,10 @@
 
 	<!-- Main container class which contains sign-up form -->
 	<div class="container">	
-		<form >
+		<form id="indexPageForm" name="indexPageForm" method="post" action="php/register.php">
 			<div class="row">
 				<div class="col-xs-4">
-					<input id="indexPageEmailId" type="input" class="form-control" placeholder="Please enter your Email" oninput="validate()">
+					<input id="indexPageEmailId" type="text" class="form-control" placeholder="Please enter your Email" oninput="validate()" name="indexPageEmailId">
 				</div>
 				<div class="col-xs-2" align="left">
 					<strong id="indexPageValidateText" class="text-left"></strong>
@@ -58,35 +58,35 @@
 
 			<div class="row">
 				<div class="col-xs-4">
-					<input id="indexPageName" type="input" class="form-control" id="inputPassword" placeholder="Please enter your Name">
+					<input id="indexPageName" name="indexPageName" type="text" class="form-control" id="inputPassword" placeholder="Please enter your Name">
 				</div>
 			</div><br>
 
 			<div class="row">
 				<div class="col-xs-4">
 					<div class="form-group">
-						<select class="form-control">
+						<select class="form-control" id='indexPageLangSelect' name='indexPageLangSelect'>
 							<optgroup label="Please select desired language (L2)"></optgroup>
 							<optgroup label="----------"></optgroup>
-							<option>English</option>
-							<option>Gujarati</option>
-							<option>Bengali</option>
+							<option value="bn">Bengali</option>
+							<option value="gu">Gujarati</option>
+							<option value="hi">Hindi</option>
 						</select>
 					</div>
 				</div>
 			</div>
 
-			<div class="row">
+			<!-- <div class="row">
 				<div class="col-xs-3" align="left">
 					<div class="checkbox">
 						<label><input id="indexPageRememberCheck" type="checkbox"> Remember me</label>
 					</div>
 				</div>
-			</div>
+			</div> -->
 
 			<div class="row">
 				<div class="col-xs-2" align="left">
-					<button type="button" class="btn btn-primary btn-block" onclick="checkFields()">Start my Test</button>
+					<button type="submit" name="indexPageSubmitBut" value="submit" class="btn btn-primary btn-block" onclick="checkFields()">Start my Test</button>
 				</div>
 				<div class="col-xs-2" align="right">
 					<button type="button" class="btn btn-primary btn-block" onclick="resetFields()">Reset</button>
