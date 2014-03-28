@@ -16,7 +16,7 @@ var startTime;
 function display() {
     // later record end time
     var endTime = new Date();
-
+    var time;
     // time difference in ms
     var timeDiff = endTime - startTime;
 
@@ -42,7 +42,8 @@ function display() {
     setTimeout(display, 1000);
     console.log(timeDiff);
     document.getElementById('testPageTimeShow').innerHTML = minutes + ":" + seconds;
-    document.getElementById('testPageTime').innerHTML = timeDiff;
+    time = 60 * minutes + seconds;
+    document.getElementById('testPageTime').innerHTML = time;
 }
 startTime = new Date();
 setTimeout(display, 1000);

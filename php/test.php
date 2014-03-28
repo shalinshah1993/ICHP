@@ -65,7 +65,7 @@
 					<!-- echo '<td>'.$r['q_no'].'</td>'; -->
 					<?php
 					$progress = (int) $quest_id/25.0*100;
-					echo '<div class="progress-bar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" role="progressbar" style="width: '.$progress.'%"> Progress: '.$progress.'%';
+					echo '<div class="progress-bar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" role="progressbar" style="width: '.$progress.'%">'	;
 					?>
 				</div>
 			</div>
@@ -76,10 +76,9 @@
 				<table class="table">					
 					<tr class="panel-heading">
 						<th ><?php echo 'Passage '.$pass_id; ?></th>
-						<th ></th>
-						<td>
-							<p>Time Elapsed:</p><p id="testPageTimeShow"></p><p id="testPageTime" hidden></p>
-							</td>
+						<th> Time Elapsed: </th>
+						<th id="testPageTimeShow"></th>
+						<th id="testPageTime" hidden></th>
 					</tr>
 					<tr>
 						<td rowspan=3 width="70%" height="100%">
