@@ -1,13 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.0.4
+-- version 3.5.8.1deb1
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Mar 11, 2014 at 03:27 PM
--- Server version: 5.6.12-log
--- PHP Version: 5.4.12
+-- Generation Time: Mar 29, 2014 at 12:01 AM
+-- Server version: 5.5.34-0ubuntu0.13.04.1
+-- PHP Version: 5.4.9-4ubuntu2.4
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 
@@ -19,8 +19,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `onlinetest`
 --
-CREATE DATABASE IF NOT EXISTS `onlinetest` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
-USE `onlinetest`;
 
 -- --------------------------------------------------------
 
@@ -76,6 +74,7 @@ CREATE TABLE IF NOT EXISTS `question` (
   `option_4` varchar(500) CHARACTER SET utf8 NOT NULL,
   `english_option_4` varchar(500) NOT NULL,
   `passage_id` int(11) NOT NULL,
+  `answer_correct` int(11) NOT NULL DEFAULT '1',
   PRIMARY KEY (`q_no`),
   KEY `passage_id` (`passage_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -84,32 +83,32 @@ CREATE TABLE IF NOT EXISTS `question` (
 -- Dumping data for table `question`
 --
 
-INSERT INTO `question` (`q_no`, `q_english`, `q_name`, `option_1`, `english_option_1`, `option_2`, `english_option_2`, `option_3`, `english_option_3`, `option_4`, `english_option_4`, `passage_id`) VALUES
-(1, 'Which side of Hooghly river is Kolkata situated?', 'કોલકાતા શહર હુગલી નદીની કઈ બાજુ સ્થિત છે ?', 'પૂર્વ', '    East', 'પશ્ચિમ', 'West', 'ઉત્તર', 'North', 'દક્ષિણ', 'South', 6),
-(2, 'In terms of population,what is the rank of Kolakata internationally ?', 'આબાદી ક્ષેત્રે વિશ્વસ્તરે કોલકાતા કયા નંબર પર આવે છે ?', '૧', '1', '૨', '2', '૩', '3', '૮', '8', 6),
-(3, 'What is the average minimum temperature in Kolkata?', 'કોલકાતામાં સરેરાશ લઘુત્તમ તાપમાન કેટલું હોય છે? ', '૨૬.૮', '26.8', '૧૯ ', '19', '૩૦', '30', '૩.૫', '3.5', 6),
-(4, 'What is Kalvaishakhi?', 'કાલવૈશાખી એટલે શું?', 'ઉનાળાની શરૂઆતમાં થતું વાવાઞોડું', 'Cold wind storm in the beginning of summer', 'ઉનાળાની અંતે થતું વાવાઞોડું', 'Cold wind storm at the ending of summer', 'ઉનાળાની શરૂઆત માં થતું ધુમ્મસ', 'Fog in the beginning of summer', 'ઉનાળાની અંતે થતો વરસાદ', 'The rains at the ending of summer', 6),
-(5, 'Manavendra Mukhopadhyay is famous for:', 'માનવેન્દ્ર મુખોપાધ્યાય શાના માટે જાણીતા હતા?', 'રવીન્દ્રસંગીત', 'Ravindrasangit', 'નાઝરુલગીતી', 'Nazrulgiti', 'બેન્ડ મ્યુઝિક', 'Band Music', 'બ્રહ્મો સંગીત', 'Brahmo Sangit', 6),
-(6, 'What religious philosophy is encoded in Charyapad?', 'ચર્યાપદમાં  કયું ધાર્મિક તત્વજ્ઞાન છે? ', 'હિંદુ', 'Hinduism', 'બૌદ્ધ', 'Buddhism', 'મુસ્લીમ', 'Muslim', 'ખ્રિસ્તી', 'Christian', 7),
-(7, 'Who discovered Charyapad?', 'ચર્યાપદ કોણે શોધ્યું?', 'હરપ્રસાદ શાસ્ત્રી', 'Haraprasad Shastri', 'સુનીતીકુમાર ચટ્ટોપાધ્યાય', 'Sunitikumar Chattopadhyay', 'હલેન લુઇપાદ', 'Halen Luipada', 'મુહમ્મદ શહીદુલ્લાહ', 'Muhammad Sahidullah', 7),
-(8, 'How many verses are there in Charyapad?', 'ચર્યાપદમાં કેટલી કલમો છે?', '૧૦૦', '100', '૧૫૦૦', '1500', '૧૦૦૦', '1000', '૫૦૦', '500', 7),
-(9, 'When was Charyapad written?', 'ચર્યાપદના લેખ ને લઈને કઈ કઈ સાલ નો હોવાનો વાદવિવાદ દર્શાવ્યો છે ?', 'ઈ.સ. ૫૦૦ થી  ઈ.સ. ૮૦૦', '500 AD to 800 AD', 'ઈ.સ. ૧૦૦૦ થી ઈ.સ. ૧૮૦૦', '1000 AD to 1800 AD', 'ઈ.સ. ૮૦૦ થી  ઈ.સ. ૧૮૦૦', '500 AD to 1800 AD', 'ઈ.સ. ૮૦૦ થી ઈ.સ. ૧૦૦૦', '800 AD to 1000 AD', 7),
-(10, 'Why is Charyapad called the Sandhya Bhasha?', 'ચર્યાપદની ભાષા ને કેમ સંધ્યાભાષા કહેવાય છે?', 'કારણ કે તેના લેખ સંધ્યા કાલ માં લખાયેલા છે.', '', 'કારણ કે તે બહુ પ્રાચીન સમય માં લખાયેલી છે.', '', 'કારણ કે એમાં લખાયેલા લેખની ભાષા સમજવી અઘરી છે.', '', 'કારણ કે તેમાં થી બહુ બધી વર્તમાન સમયની ભાષા ઉત્પન થાય છે એવું માનવા માં આવે છે', '', 7),
-(11, 'What policy was adopted by Lord Curzon for the Northwest border provinces?', 'ઉત્તરી પશ્ચિમ સીમા પર આવેલા પ્રાંતો માટે કર્ઝનની શું નીતિ હતી?', 'તેમને બ્રીટીશ રાજમાં સામેલ કરવાની નીતિ', 'To include those provinces under the British rule.', 'તેમને સેના ની સહાયતા આપીને પરોક્ષ રીતે તેમની જમીન પર નિયંત્રણ મેળવવાની નીતિ', '', 'બ્રીટીશ વેપારના પ્રોત્સાહન માટે', '', 'આમાં થી એકે નહિ ', '', 8),
-(12, 'What was the main administrative contribution by Lord Curzon?', 'વહીવટમાં કર્ઝનનું મુખ્ય યોગદાન શું હતું?', 'એમને બહુ જ જટિલ અમલદારશાહીની સ્થાપના કરી', '', 'આઈ.એ.એસ. અધિકારીઓ જોડે થી કામની પ્રગતિ ની માહિતી લેવી', '', 'એમને જમીનદારી કાયદા ની સ્થાપના કરી ', '', 'આમાં થી એકે નહિ ', '', 8),
-(13, 'What is the contribution of Curzon in area of farming?', 'કર્ઝનનું કૃષિક્ષેત્ર માં સહુ થી મોટું યોગદાન શું હતું?', '૧', '', 'તેમને સરકાર માં એક કૃષિ ભાગ સ્થાપિત કર્યો અને એક સંશોધન સંસ્થા સ્થાપિત કરી ', '', '૩', '', '૪', '', 8),
-(14, 'Where is the Agricultural research institute established by Lord Curzon located?', ' કર્ઝને સરકાર દ્વારા લેવાતો ખેતી ની જમીન ઉપર નો કર કેમ ઘટાડ્યો?', 'કોલકાતા', 'Kolkata', 'ગુજરાત', 'Gujarat', 'બિહાર', 'Bihar', 'ઓરિસ્સા', 'Odisha', 8),
-(15, 'After the Curzon era what was the length of Indian railway lines in kms?', 'કર્ઝન ના કાર્યકાળ પછી ભારતીય રેલ્વે લાઈનની લંબાઈ કેટલી (કી. મી.માં) ?', ' ૨૭૦૦૦', '', ' ૬૦૦૦', '', '૨૧૦૦૦', '', '૩૩૦૦૦', '', 8),
-(16, 'Which political party dominated in 1971''s Bangladesh election?', 'કઈ રાજનૈતિક પાર્ટીને ૧૯૭૧ની ચૂંટણીમાં બહુમત મળ્યું હતું?', 'આવામી લીગ', '', 'મુસ્લીમ લીગ', '', 'રાષ્ટ્રીય સેવક સંઘ', '', 'આમાં થી એકે નહિ ', '', 9),
-(17, 'When did this war end?', 'આ યુદ્ધ ક્યારે પત્યું?', '1', '', '2', '', '3', '', '4', '', 9),
-(18, 'When and where did the Pakistan''s army accept its defeat?', 'પાકિસ્તાનની સેનાએ ક્યાં અને ક્યારે હાર માની?', '1', '', '2', '', '3', '', '4', '', 9),
-(19, 'What was broadcasted at 5 o''clock on 3rd December 1971?', 'પાકિસ્તાની રેડિયો ઉપર ૫ વાગે ૩જી ડીસેમ્બેર,૧૯૭૧ ના રોજ શું પ્રસારીત થયું?', 'ભારતે પશ્ચિમી પાકિસ્તાનની સરહદે હુમલો કર્યો', '', 'પશ્ચિમી પાકિસ્તાનની સેના એ પૂર્વ પાકિસ્તાનની સરહદ પાર કરી ', '', 'પશ્ચિમી પાકિસ્તાને ભારતની સરહદે હુમલો કર્યો ', '', 'ભારતીય સેનાએ પૂર્વ પાકિસ્તાનની સરહદ પાર કરી', '', 9),
-(20, 'When did Indian army cross eastern borders of Pakistan?', 'ભારતીય સેનાએ પૂર્વ પાકિસ્તાનની સરહદ પાર કરી', 'ભારતે પૂર્વી પાકિસ્તાન પર હુમલો સાધ્યો', '', 'મુક્તીયોદ્ધા ના આંતરિક હુમલાના કારણે પાકિસ્તાનની સેના ની દશા તુચ્છ થઇ ગયી ', '', '3', '', '4', '', 9),
-(21, 'What is Kanika''s speciality in Rabindra Sangit?', 'કનિકા ની રબીન્દ્રસંગીતની અંદર શેમાં ખાસિયત હતી?', 'અતુલપ્રસાદના ગીતો માં ', 'Songs by Atulprasad', 'બંગાળી કીર્તન ', 'Bangali kirtan', 'તાપ્પા', 'Tappa', 'દ્વીજેન્દ્રલાલ દ્વારા લખાયેલા ગીતો ', 'Songs by Dvijendralal ', 10),
-(22, 'What other genres of music apart from Rabindra Sangit did Kanika sing?', 'રબીન્દ્રસંગીત સિવાય કનિકા કયા પ્રકાર ના ગીતો ગાતી હતી?', 'બંગાળીકીર્તન', 'Bangalikirtan', 'અતુલ પ્રસાદ ના ગીતો  ', 'Songs by AtulPrasad', ' દ્વિજેન્દ્રલાલના ગીતો', 'Songs by Dvijendralal', 'રજનીકાંત સેનના ગીતો', 'Songs by Rajnikant Sen', 10),
-(23, 'Where did Kanika spend her childhood days?', 'કનીકાએ બાળપણના દિવસો ક્યાં વિતાવ્યા છે?', 'વિષ્ણુપૂર અને શાંતિનિકેતન', 'Vishnupur and Shantiniketan', 'સોનામુખી અને શાંતિનિકેતન', 'Sonamukhi and Shantiniketan', 'વિષ્ણુપુર અને સોનામુખી', 'Vishnupur and Sonamukhi', 'શાંતિનિકેતન', 'Shantiniketan', 10),
-(24, 'What nickname was given to Kanika by Rabindranath?', 'કનિકાને રબીન્દ્રનાથે કયું ઉપનામ આપ્યું હતું?', 'કનુ', 'Kanu', 'મનુ', 'Manu', 'મહોર', 'Mahor', 'આમાં થી એકે નહિ ', '', 10),
-(25, 'What did Kanika sing in her first radio show?', 'કનિકા એ રેડિયો પર ના તેના પહેલા શોમાં શું ગાયું હતું?', 'ઓબા તુમી પંચદશી', '', 'ભારતીથક સ્મૃતિ સોધાય', '', 'છાયા ઘણા ઈચ્છે બોને બોને', '', 'આમાં થી એકે નહિ ', '', 10);
+INSERT INTO `question` (`q_no`, `q_english`, `q_name`, `option_1`, `english_option_1`, `option_2`, `english_option_2`, `option_3`, `english_option_3`, `option_4`, `english_option_4`, `passage_id`, `answer_correct`) VALUES
+(1, 'Which side of Hooghly river is Kolkata situated?', 'કોલકાતા શહર હુગલી નદીની કઈ બાજુ સ્થિત છે ?', 'પૂર્વ', '    East', 'પશ્ચિમ', 'West', 'ઉત્તર', 'North', 'દક્ષિણ', 'South', 6, 1),
+(2, 'In terms of population,what is the rank of Kolakata internationally ?', 'આબાદી ક્ષેત્રે વિશ્વસ્તરે કોલકાતા કયા નંબર પર આવે છે ?', '૧', '1', '૨', '2', '૩', '3', '૮', '8', 6, 1),
+(3, 'What is the average minimum temperature in Kolkata?', 'કોલકાતામાં સરેરાશ લઘુત્તમ તાપમાન કેટલું હોય છે? ', '૨૬.૮', '26.8', '૧૯ ', '19', '૩૦', '30', '૩.૫', '3.5', 6, 1),
+(4, 'What is Kalvaishakhi?', 'કાલવૈશાખી એટલે શું?', 'ઉનાળાની શરૂઆતમાં થતું વાવાઞોડું', 'Cold wind storm in the beginning of summer', 'ઉનાળાની અંતે થતું વાવાઞોડું', 'Cold wind storm at the ending of summer', 'ઉનાળાની શરૂઆત માં થતું ધુમ્મસ', 'Fog in the beginning of summer', 'ઉનાળાની અંતે થતો વરસાદ', 'The rains at the ending of summer', 6, 1),
+(5, 'Manavendra Mukhopadhyay is famous for:', 'માનવેન્દ્ર મુખોપાધ્યાય શાના માટે જાણીતા હતા?', 'રવીન્દ્રસંગીત', 'Ravindrasangit', 'નાઝરુલગીતી', 'Nazrulgiti', 'બેન્ડ મ્યુઝિક', 'Band Music', 'બ્રહ્મો સંગીત', 'Brahmo Sangit', 6, 1),
+(6, 'What religious philosophy is encoded in Charyapad?', 'ચર્યાપદમાં  કયું ધાર્મિક તત્વજ્ઞાન છે? ', 'હિંદુ', 'Hinduism', 'બૌદ્ધ', 'Buddhism', 'મુસ્લીમ', 'Muslim', 'ખ્રિસ્તી', 'Christian', 7, 1),
+(7, 'Who discovered Charyapad?', 'ચર્યાપદ કોણે શોધ્યું?', 'હરપ્રસાદ શાસ્ત્રી', 'Haraprasad Shastri', 'સુનીતીકુમાર ચટ્ટોપાધ્યાય', 'Sunitikumar Chattopadhyay', 'હલેન લુઇપાદ', 'Halen Luipada', 'મુહમ્મદ શહીદુલ્લાહ', 'Muhammad Sahidullah', 7, 1),
+(8, 'How many verses are there in Charyapad?', 'ચર્યાપદમાં કેટલી કલમો છે?', '૧૦૦', '100', '૧૫૦૦', '1500', '૧૦૦૦', '1000', '૫૦૦', '500', 7, 1),
+(9, 'When was Charyapad written?', 'ચર્યાપદના લેખ ને લઈને કઈ કઈ સાલ નો હોવાનો વાદવિવાદ દર્શાવ્યો છે ?', 'ઈ.સ. ૫૦૦ થી  ઈ.સ. ૮૦૦', '500 AD to 800 AD', 'ઈ.સ. ૧૦૦૦ થી ઈ.સ. ૧૮૦૦', '1000 AD to 1800 AD', 'ઈ.સ. ૮૦૦ થી  ઈ.સ. ૧૮૦૦', '500 AD to 1800 AD', 'ઈ.સ. ૮૦૦ થી ઈ.સ. ૧૦૦૦', '800 AD to 1000 AD', 7, 1),
+(10, 'Why is Charyapad called the Sandhya Bhasha?', 'ચર્યાપદની ભાષા ને કેમ સંધ્યાભાષા કહેવાય છે?', 'કારણ કે તેના લેખ સંધ્યા કાલ માં લખાયેલા છે.', '', 'કારણ કે તે બહુ પ્રાચીન સમય માં લખાયેલી છે.', '', 'કારણ કે એમાં લખાયેલા લેખની ભાષા સમજવી અઘરી છે.', '', 'કારણ કે તેમાં થી બહુ બધી વર્તમાન સમયની ભાષા ઉત્પન થાય છે એવું માનવા માં આવે છે', '', 7, 1),
+(11, 'What policy was adopted by Lord Curzon for the Northwest border provinces?', 'ઉત્તરી પશ્ચિમ સીમા પર આવેલા પ્રાંતો માટે કર્ઝનની શું નીતિ હતી?', 'તેમને બ્રીટીશ રાજમાં સામેલ કરવાની નીતિ', 'To include those provinces under the British rule.', 'તેમને સેના ની સહાયતા આપીને પરોક્ષ રીતે તેમની જમીન પર નિયંત્રણ મેળવવાની નીતિ', '', 'બ્રીટીશ વેપારના પ્રોત્સાહન માટે', '', 'આમાં થી એકે નહિ ', '', 8, 1),
+(12, 'What was the main administrative contribution by Lord Curzon?', 'વહીવટમાં કર્ઝનનું મુખ્ય યોગદાન શું હતું?', 'એમને બહુ જ જટિલ અમલદારશાહીની સ્થાપના કરી', '', 'આઈ.એ.એસ. અધિકારીઓ જોડે થી કામની પ્રગતિ ની માહિતી લેવી', '', 'એમને જમીનદારી કાયદા ની સ્થાપના કરી ', '', 'આમાં થી એકે નહિ ', '', 8, 1),
+(13, 'What is the contribution of Curzon in area of farming?', 'કર્ઝનનું કૃષિક્ષેત્ર માં સહુ થી મોટું યોગદાન શું હતું?', '૧', '', 'તેમને સરકાર માં એક કૃષિ ભાગ સ્થાપિત કર્યો અને એક સંશોધન સંસ્થા સ્થાપિત કરી ', '', '૩', '', '૪', '', 8, 1),
+(14, 'Where is the Agricultural research institute established by Lord Curzon located?', ' કર્ઝને સરકાર દ્વારા લેવાતો ખેતી ની જમીન ઉપર નો કર કેમ ઘટાડ્યો?', 'કોલકાતા', 'Kolkata', 'ગુજરાત', 'Gujarat', 'બિહાર', 'Bihar', 'ઓરિસ્સા', 'Odisha', 8, 1),
+(15, 'After the Curzon era what was the length of Indian railway lines in kms?', 'કર્ઝન ના કાર્યકાળ પછી ભારતીય રેલ્વે લાઈનની લંબાઈ કેટલી (કી. મી.માં) ?', ' ૨૭૦૦૦', '', ' ૬૦૦૦', '', '૨૧૦૦૦', '', '૩૩૦૦૦', '', 8, 1),
+(16, 'Which political party dominated in 1971''s Bangladesh election?', 'કઈ રાજનૈતિક પાર્ટીને ૧૯૭૧ની ચૂંટણીમાં બહુમત મળ્યું હતું?', 'આવામી લીગ', '', 'મુસ્લીમ લીગ', '', 'રાષ્ટ્રીય સેવક સંઘ', '', 'આમાં થી એકે નહિ ', '', 9, 1),
+(17, 'When did this war end?', 'આ યુદ્ધ ક્યારે પત્યું?', '1', '', '2', '', '3', '', '4', '', 9, 1),
+(18, 'When and where did the Pakistan''s army accept its defeat?', 'પાકિસ્તાનની સેનાએ ક્યાં અને ક્યારે હાર માની?', '1', '', '2', '', '3', '', '4', '', 9, 1),
+(19, 'What was broadcasted at 5 o''clock on 3rd December 1971?', 'પાકિસ્તાની રેડિયો ઉપર ૫ વાગે ૩જી ડીસેમ્બેર,૧૯૭૧ ના રોજ શું પ્રસારીત થયું?', 'ભારતે પશ્ચિમી પાકિસ્તાનની સરહદે હુમલો કર્યો', '', 'પશ્ચિમી પાકિસ્તાનની સેના એ પૂર્વ પાકિસ્તાનની સરહદ પાર કરી ', '', 'પશ્ચિમી પાકિસ્તાને ભારતની સરહદે હુમલો કર્યો ', '', 'ભારતીય સેનાએ પૂર્વ પાકિસ્તાનની સરહદ પાર કરી', '', 9, 1),
+(20, 'When did Indian army cross eastern borders of Pakistan?', 'ભારતીય સેનાએ પૂર્વ પાકિસ્તાનની સરહદ પાર કરી', 'ભારતે પૂર્વી પાકિસ્તાન પર હુમલો સાધ્યો', '', 'મુક્તીયોદ્ધા ના આંતરિક હુમલાના કારણે પાકિસ્તાનની સેના ની દશા તુચ્છ થઇ ગયી ', '', '3', '', '4', '', 9, 1),
+(21, 'What is Kanika''s speciality in Rabindra Sangit?', 'કનિકા ની રબીન્દ્રસંગીતની અંદર શેમાં ખાસિયત હતી?', 'અતુલપ્રસાદના ગીતો માં ', 'Songs by Atulprasad', 'બંગાળી કીર્તન ', 'Bangali kirtan', 'તાપ્પા', 'Tappa', 'દ્વીજેન્દ્રલાલ દ્વારા લખાયેલા ગીતો ', 'Songs by Dvijendralal ', 10, 1),
+(22, 'What other genres of music apart from Rabindra Sangit did Kanika sing?', 'રબીન્દ્રસંગીત સિવાય કનિકા કયા પ્રકાર ના ગીતો ગાતી હતી?', 'બંગાળીકીર્તન', 'Bangalikirtan', 'અતુલ પ્રસાદ ના ગીતો  ', 'Songs by AtulPrasad', ' દ્વિજેન્દ્રલાલના ગીતો', 'Songs by Dvijendralal', 'રજનીકાંત સેનના ગીતો', 'Songs by Rajnikant Sen', 10, 1),
+(23, 'Where did Kanika spend her childhood days?', 'કનીકાએ બાળપણના દિવસો ક્યાં વિતાવ્યા છે?', 'વિષ્ણુપૂર અને શાંતિનિકેતન', 'Vishnupur and Shantiniketan', 'સોનામુખી અને શાંતિનિકેતન', 'Sonamukhi and Shantiniketan', 'વિષ્ણુપુર અને સોનામુખી', 'Vishnupur and Sonamukhi', 'શાંતિનિકેતન', 'Shantiniketan', 10, 1),
+(24, 'What nickname was given to Kanika by Rabindranath?', 'કનિકાને રબીન્દ્રનાથે કયું ઉપનામ આપ્યું હતું?', 'કનુ', 'Kanu', 'મનુ', 'Manu', 'મહોર', 'Mahor', 'આમાં થી એકે નહિ ', '', 10, 1),
+(25, 'What did Kanika sing in her first radio show?', 'કનિકા એ રેડિયો પર ના તેના પહેલા શોમાં શું ગાયું હતું?', 'ઓબા તુમી પંચદશી', '', 'ભારતીથક સ્મૃતિ સોધાય', '', 'છાયા ઘણા ઈચ્છે બોને બોને', '', 'આમાં થી એકે નહિ ', '', 10, 1);
 
 -- --------------------------------------------------------
 
@@ -121,6 +120,7 @@ CREATE TABLE IF NOT EXISTS `record_answer` (
   `email_id` varchar(100) NOT NULL,
   `q_no` int(40) NOT NULL,
   `answer` int(11) NOT NULL,
+  `time_elapsed` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`email_id`,`q_no`),
   KEY `email_id` (`email_id`,`q_no`),
   KEY `q_no` (`q_no`),
@@ -135,95 +135,26 @@ CREATE TABLE IF NOT EXISTS `record_answer` (
 -- Dumping data for table `record_answer`
 --
 
-INSERT INTO `record_answer` (`email_id`, `q_no`, `answer`) VALUES
-('aad', 1, 1),
-('aad', 2, 3),
-('abc123dqwerty1234', 25, 2),
-('abcdqwerty1234', 1, 0),
-('arit', 25, 4),
-('dekho', 1, 1),
-('lowhy', 1, 0),
-('parth_me@daiict.ac.in', 1, 1),
-('parth_me@daiict.ac.in', 2, 4),
-('parth_me@daiict.ac.in', 3, 1),
-('parth_me@daiict.ac.in', 4, 1),
-('parth_me@daiict.ac.in', 5, 2),
-('parth_me@daiict.ac.in', 6, 2),
-('parth_me@daiict.ac.in', 7, 1),
-('parth_me@daiict.ac.in', 8, 1),
-('parth_me@daiict.ac.in', 9, 4),
-('parth_me@daiict.ac.in', 10, 3),
-('parth_me@daiict.ac.in', 11, 2),
-('qwert', 25, 1),
-('shalinshah', 1, 1),
-('shivang', 1, 1),
-('shivang', 2, 1),
-('shivang', 3, 0),
-('shivang', 4, 1),
-('shivang', 5, 1),
-('shivang', 6, 2),
-('shivang', 7, 2),
-('shivang', 8, 2),
-('shivang', 9, 2),
-('shivang', 10, 1),
-('shivang', 11, 3),
-('shivang', 12, 3),
-('shivang', 13, 2),
-('shivang', 14, 1),
-('shivang', 15, 2),
-('shivang', 16, 1),
-('shivang', 17, 3),
-('shivang', 18, 4),
-('shivang', 19, 3),
-('shivang', 20, 3),
-('shivang', 21, 2),
-('shivang', 22, 1),
-('shivang', 23, 3),
-('shivang', 24, 2),
-('shivang', 25, 2),
-('shubh', 1, 2),
-('shubh', 2, 3),
-('shubh', 3, 0),
-('shubh', 4, 0),
-('shubh', 5, 0),
-('shubh', 6, 0),
-('shubh', 7, 0),
-('shubh', 8, 0),
-('shubh', 9, 0),
-('shubh', 10, 0),
-('shubh', 11, 0),
-('shubh', 12, 0),
-('shubh', 13, 0),
-('shubh', 14, 0),
-('shubh', 15, 0),
-('shubh', 16, 0),
-('shubh', 17, 0),
-('shubh', 18, 0),
-('shubh', 19, 0),
-('shubh', 20, 0),
-('shubh', 21, 0),
-('shubh', 22, 0),
-('shubh', 23, 0),
-('shubh', 24, 0),
-('shubh', 25, 0),
-('whyyaar', 1, 0),
-('whyyaar', 2, 0),
-('whyyaar', 3, 0),
-('whyyaar', 4, 0),
-('whyyaar', 5, 0),
-('whyyaar', 6, 0),
-('whyyaar', 7, 0),
-('whyyaar', 8, 0),
-('whyyaar', 9, 0),
-('whyyaar', 10, 0),
-('whyyaar', 11, 0),
-('whyyaar', 12, 0),
-('whyyaar', 13, 0),
-('whyyaar', 14, 0),
-('whyyaar', 15, 0),
-('whyyaar', 16, 0),
-('whyyaar', 17, 0),
-('whyyaar', 18, 0);
+INSERT INTO `record_answer` (`email_id`, `q_no`, `answer`, `time_elapsed`) VALUES
+('111', 1, 3, 0),
+('111', 2, 1, 0),
+('a1@a1.com', 1, 4, 0),
+('a1@a1.com', 2, 4, 0),
+('a@a.com', 1, 1, 0),
+('a@a.com', 2, 3, 0),
+('fd', 1, 3, 4),
+('hvjh', 1, 1, 0),
+('hvjh', 2, 2, 0),
+('nikit@nikit.com', 1, 1, 3),
+('nikit@nikit.com', 2, 2, 11),
+('nikit@nikit.com', 3, 2, 2),
+('nikit@nikit.com', 4, 4, 2),
+('nikit@nikit.com', 5, 3, 2),
+('nikit@nikit.com', 6, 4, 3),
+('nikit@nikit.com', 7, 2, 3),
+('Shalin@Shalin.com', 1, 3, 0),
+('shalinshah1993@gmail.com', 1, 3, 8),
+('shalinshah1993@gmail.com', 2, 2, 34);
 
 -- --------------------------------------------------------
 
@@ -279,6 +210,9 @@ CREATE TABLE IF NOT EXISTS `user` (
 
 INSERT INTO `user` (`email_id`, `name`, `L1`, `L2`, `start_time`, `end_time`) VALUES
 ('', '', '', '', '2014-03-10 18:05:11', '0000-00-00 00:00:00'),
+('111', '1111', NULL, 'gu', '03:22:52', '0000-00-00 00:00:00'),
+('a1@a1.com', 'a1', NULL, 'gu', '03:11:59', '23:52:24'),
+('a@a.com', 'asf', NULL, 'gu', '09:34:24', '17:00:39'),
 ('aad', 'faad', NULL, 'gu', '11:34:01', '0000-00-00 00:00:00'),
 ('abc123dqwerty1234', 'wertyuiop', NULL, 'gu', '0000-00-00 10:00:00', '0000-00-00 10:00:00'),
 ('abcdqwerty', 'wertyuiop', NULL, 'gu', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
@@ -299,6 +233,7 @@ INSERT INTO `user` (`email_id`, `name`, `L1`, `L2`, `start_time`, `end_time`) VA
 ('e5u56u1`', 'hyrjtj', 'gu', 'bn', '2014-03-10 18:05:11', '0000-00-00 00:00:00'),
 ('eoe', 'cksd', 'gu', 'bn', '2014-03-10 18:05:11', '0000-00-00 00:00:00'),
 ('eryry', 'dfhdh', 'gu', 'bn', '2014-03-10 18:05:11', '0000-00-00 00:00:00'),
+('fd', 'a1', NULL, 'gu', '03:14:18', '0000-00-00 00:00:00'),
 ('fdopfk', 'dfgioj', 'gu', 'bn', '2014-03-10 18:05:11', '0000-00-00 00:00:00'),
 ('fgj', 'dge', 'bn', 'gu', '2014-03-10 18:05:11', '0000-00-00 00:00:00'),
 ('fhfhh', 'jhtj', 'gu', 'bn', '2014-03-10 18:05:11', '0000-00-00 00:00:00'),
@@ -306,6 +241,7 @@ INSERT INTO `user` (`email_id`, `name`, `L1`, `L2`, `start_time`, `end_time`) VA
 ('grejk', 'epfke', 'gu', 'bn', '2014-03-10 18:05:11', '0000-00-00 00:00:00'),
 ('HDFHH', 'JGHGH', NULL, 'bn', '2014-03-10 18:05:11', '0000-00-00 00:00:00'),
 ('hkuk', 'ghh', 'gu', 'bn', '2014-03-10 18:05:11', '0000-00-00 00:00:00'),
+('hvjh', 'a', NULL, 'gu', '03:13:14', '0000-00-00 00:00:00'),
 ('idof', 'fof', 'gu', 'bn', '2014-03-10 18:05:11', '0000-00-00 00:00:00'),
 ('igeniusshah@gmail.com', 'abhishek', 'gu', 'bn', '2014-03-10 18:05:11', '0000-00-00 00:00:00'),
 ('iogjgdklpg', 'dgopijert', NULL, 'bn', '2014-03-10 18:05:11', '0000-00-00 00:00:00'),
@@ -317,15 +253,18 @@ INSERT INTO `user` (`email_id`, `name`, `L1`, `L2`, `start_time`, `end_time`) VA
 ('lowhy', 'whhhw', NULL, 'gu', '10:42:42', '0000-00-00 00:00:00'),
 ('mjh', 'oj', 'gu', 'bn', '2014-03-10 18:05:11', '0000-00-00 00:00:00'),
 ('nik', 'nik', NULL, 'gu', '2014-03-10 18:05:11', '0000-00-00 00:00:00'),
+('nikit@gmail.com', 'Nikit', NULL, 'gu', '01:07:04', '0000-00-00 00:00:00'),
+('nikit@nikit.com', 'Nikit', NULL, 'gu', '03:21:56', '0000-00-00 00:00:00'),
 ('oihy', 'ijiopj', 'gu', 'bn', '2014-03-10 18:05:11', '0000-00-00 00:00:00'),
 ('oij', 'dfio', 'gu', 'bn', '2014-03-10 18:05:11', '0000-00-00 00:00:00'),
 ('parth_me@daiict.ac.in', 'Parth', NULL, 'gu', '2014-03-10 18:05:11', '0000-00-00 00:00:00'),
 ('qwert', 'ascd', NULL, 'gu', '10:23:35', '10:23:49'),
 ('riogj', 'oifghrio', NULL, 'bn', '2014-03-10 18:05:11', '0000-00-00 00:00:00'),
 ('rogije', 'iojhr', NULL, 'gu', '2014-03-10 18:05:11', '0000-00-00 00:00:00'),
-('shalin', 'shalin', NULL, 'bn', '2014-03-10 18:05:11', '0000-00-00 00:00:00'),
-('shalinshah', 'shalinshah', NULL, 'gu', '2014-03-10 18:05:11', '0000-00-00 00:00:00'),
+('Shalin@Shalin.com', 'Shalin', NULL, 'gu', '02:58:34', '0000-00-00 00:00:00'),
+('shalinshah1993@gmail.com', 'Shalin', NULL, 'gu', '03:15:36', '00:50:57'),
 ('shivang', 'shivang', NULL, 'gu', '23:47:06', '0000-00-00 00:00:00'),
+('shivang@shivu.com', 'Shivu', NULL, 'gu', '01:45:38', '0000-00-00 00:00:00'),
 ('shubh', 'shubh', NULL, 'gu', '2014-03-10 18:05:11', '0000-00-00 00:00:00'),
 ('Test2', 'Test2', NULL, 'hi', '2014-03-10 18:05:11', '0000-00-00 00:00:00'),
 ('tojoij', 'dfigjei', 'gu', 'bn', '2014-03-10 18:05:11', '0000-00-00 00:00:00'),
