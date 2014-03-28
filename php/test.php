@@ -56,11 +56,9 @@
 	$quest_row = mysql_fetch_array($quest_c);
 	?>
 
-	<body>
-
-		<div style="margin-top:100px">
+	<body  id="testPageBody" onkeydown="return (!(event.keyCode == 116) && !(event.keyCode == 82))">
+		<div style="margin-top:70px; margin-bottom:30px;">
 			<div class="container">
-
 				<div class="progress progress-striped active">
 					<!-- echo '<td>'.$r['q_no'].'</td>'; -->
 					<?php
@@ -76,7 +74,7 @@
 				<table class="table">					
 					<tr class="panel-heading">
 						<th ><?php echo 'Passage '.$pass_id; ?></th>
-						<th> Time Elapsed: </th>
+						<th> Time Elapsed in this question: </th>
 						<th id="testPageTimeShow"></th>
 						<th id="testPageTime" hidden></th>
 					</tr>
@@ -140,17 +138,16 @@
 				</table>
 			</div>
 		</div>
+	</body>
+
+
+	<div class="footer">
+		<footer>	
+			<div align="right">
+				<p><b>Developers :- Shalin Shah, Nikit Saraf and Shivang Bhatt. &nbsp; &copy; 2014 IRLab, DA-IICT.</b></p>
+			</div>
+		</footer>
 	</div>
-</body>
-
-
-<div class="footer">
-	<footer>	
-		<div align="right">
-			<p><b>Developers :- Shalin Shah, Nikit Saraf and Shivang Bhatt. &nbsp; &copy; 2014 IRLab, DA-IICT.</b></p>
-		</div>
-	</footer>
-</div>
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
