@@ -13,9 +13,34 @@ echo $timer;
 settype($answer, "int");
 settype($quest_id,"int");
 mysql_select_db("onlinetest",$db);
-$sql = "INSERT INTO record_answer (email_id, q_no, answer, time_elapsed) 
-VALUES ('$email_id', '$quest_id', '$answer', '$timer') ON DUPLICATE KEY UPDATE answer=$answer";
+
+if($answer!=0){
+// 	$sql = mysqli_query($db,"UPDATE user SET lastQAttempted='$quest_id'
+// WHERE email_id='$email_id'");
+	$sql2 = "UPDATE user SET lastQAttempted='$quest_id'
+	WHERE email_id='$email_id'";
+	//$result = mysqli_query($db, $sql);
+}
+// elseif($answer==0){
+// 	$sql = "UPDATE user
+//     SET lastQAttempted = $quest_id
+//     WHERE email_id = $email_id";
+// }
+
+if($answer!=0){
+	$sql = "INSERT INTO record_answer (email_id, q_no, answer, time_elapsed) 
+	VALUES ('$email_id', '$quest_id', '$answer', '$timer') ON DUPLICATE KEY UPDATE 
+	answer=$answer,
+	time_elapsed=time_elapsed+$timer";
+}
+elseif($answer==0){
+	$sql = "INSERT INTO record_answer (email_id, q_no, answer, time_elapsed) 
+	VALUES ('$email_id', '$quest_id', '$answer', '$timer') ON DUPLICATE KEY UPDATE  
+	time_elapsed=time_elapsed+$timer";
+}
+
 $result = mysql_query($sql);
+$result = mysql_query($sql2);
 $quest_id++;
 echo $quest_id;
 $pass = mysql_query('SELECT passage_id FROM question WHERE q_no="'.$quest_id.'"');

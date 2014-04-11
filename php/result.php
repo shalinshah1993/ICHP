@@ -38,7 +38,7 @@
 
 	<div style="margin-top: 100px">
 		<div class="container">
-			<p class="alert alert-success"><b>Congratulations!</b> You've completeted the test. Thank-you for your time and efforts, we appriciate it.</p>
+			<p class="alert alert-success"><b>Congratulations!</b> Thank you for giving the test. If you have not completed the test, you can always resume later. Thank-you for your time and efforts, we appreciate it.</p>
 			<div class="panel panel-primary">
 				<div class="panel-heading"><font size="3"><b>Results for your Test</b></font></div>
 
@@ -110,7 +110,7 @@
 	<div class="footer">
 		<footer>	
 			<div align="right">
-				<p><b>Developers :- Shalin Shah, Nikit Saraf and Shivang Bhatt. &nbsp; &copy; 2014 IRLab, DA-IICT.</b></p>
+				<p><b>Developers :- Abhishek Shah, Shivang Bhatt, Shalin Shah and Nikit Saraf. &nbsp; &copy; 2014 IRLab, DA-IICT.</b></p>
 			</div>
 		</footer>
 	</div>

@@ -68,7 +68,7 @@
 				</div>
 			</div>
 
-			<p id="testPageError" class="alert alert-danger" hidden>Please select any one option before proceding to the next page.</p>
+			<!-- <p id="testPageError" class="alert alert-danger" hidden>Please select any one option before proceding to the next page.</p> -->
 
 			<div class="panel panel-primary">
 				<table class="table">					
@@ -104,7 +104,7 @@
 
 					<tr>
 						<td height="80%">
-							<form id ="qform" method="post" action="recordscript.php" onsubmit="return validateOption()">
+							<form id ="qform" method="post" action="recordscript.php" onsubmit="return TRUE">
 								<div>
 									<input type="radio" id="option_1" name="option" value="1">
 									<label for="option_1"><?php echo $quest_row['option_1']; ?></label><br/>
@@ -144,7 +144,7 @@
 	<div class="footer">
 		<footer>	
 			<div align="right">
-				<p><b>Developers :- Shalin Shah, Nikit Saraf and Shivang Bhatt. &nbsp; &copy; 2014 IRLab, DA-IICT.</b></p>
+				<p><b>Developers :- Abhishek Shah, Shivang Bhatt, Shalin Shah and Nikit Saraf. &nbsp; &copy; 2014 IRLab, DA-IICT.</b></p>
 			</div>
 		</footer>
 	</div>
